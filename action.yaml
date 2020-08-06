@@ -1,48 +1,6 @@
 name: Code-Suggester
-description: Suggest code!
+description: An action-wrapper for the npm cli code-suggester. It suggests code to your repository
 inputs:
-  upstream-repo:
-    description: 'The repository to create the fork off of.'
-    required: true
-  upstream-owner:
-    description: 'The owner of the upstream repository.'
-    required: true
-  description:
-    description: 'The GitHub Pull Request description.'
-    required: true
-  title:
-    description: 'The GitHub Pull Request title.'
-    required: true
-  branch:
-    description: 'The GitHub working branch name.'
-    required: true
-  primary:
-    description: 'The primary upstream branch to open a PR against.'
-    required: true
-  message:
-    description: 'The GitHub commit message.'
-    required: true
-  force:
-    description: >-
-      Whether or not to force push a reference with different commit history
-      before the remote reference HEAD. Default is false
-  maintainers-can-modify:
-    description: 'Whether or not maintainers can modify the pull request.'
-  git-dir:
-    description: 'The path of a git directory'
-    required: true
-    default: ${GITHUB_WORKSPACE}
 runs:
   using: docker
   image: Dockerfile
-  args:
-    - ${{ inputs.upstream-repo }}
-    - ${{ inputs.upstream-owner }}
-    - ${{ inputs.description }}
-    - ${{ inputs.title }}
-    - ${{ inputs.branch }}
-    - ${{ inputs.primary }}
-    - ${{ inputs.message }}
-    - ${{ inputs.force }}
-    - ${{ inputs.maintainers-can-modify }}
-    - ${{ inputs.git-dir }}
